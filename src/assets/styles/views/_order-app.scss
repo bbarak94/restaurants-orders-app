@@ -1,0 +1,71 @@
+.order-app {
+
+
+    table {
+        width: 100%;
+        margin: 10px auto 30px auto;
+        border-spacing: 0;
+        border-collapse: collapse;
+
+        td,
+        th {
+            padding: 6px 6px;
+            // padding: 12px 5px;
+            border: 1px solid #ddd;
+            text-align: center;
+        }
+
+
+        thead:first-child {
+            background-color: darkblue;
+            color: white;
+        }
+
+        tbody tr:nth-child(even) {
+            background-color: #f5f5f5;
+        }
+
+    }
+
+    .order-edit-form {
+        padding: 10px;
+        flex-wrap: wrap;
+        gap: 10px;
+        select{
+            min-height: 24px;
+            padding: 1px 2px;
+            height: 100%;
+        }
+    }
+
+
+
+}
+
+
+@media(max-width:970px) {
+
+    table {
+        display: block;
+        width: 100%;
+
+        thead {
+            display: none;
+        }
+
+        tbody,
+        tr,
+        td {
+            display: block;
+            width: 100%;
+
+            &.package-id {
+                display: none;
+            }
+
+        }
+    }
+
+
+
+}

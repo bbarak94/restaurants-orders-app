@@ -1,0 +1,20 @@
+.printer-list {
+   gap: 10px;
+   list-style: none;
+   flex-wrap: wrap;
+}
+
+.printer-preview {
+   cursor: pointer;
+   min-width: 200px;
+   min-height: 100px;
+   color: whitesmoke;
+   border-radius: .2em;
+   margin: 5px;
+   text-align: center;
+   padding: 10px;
+}
+
+.printer-preview span {
+   color: gold;
+}

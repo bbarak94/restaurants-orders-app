@@ -1,0 +1,26 @@
+.settings-app{
+   padding: 10px;
+   text-align: center;
+   .settings-form{
+      input{
+         text-align: center;
+         min-width: 300px;
+      }
+   }
+   .admin-settings{
+
+      .admin-edit{
+         .esc-btn{
+            align-self: flex-start;
+            justify-self: flex-start;
+         }
+      }
+   }
+}
+
+
+@media(max-width:700px) {
+   .settings-app{
+      flex-direction: column;
+   }
+}
