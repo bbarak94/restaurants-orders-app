@@ -6,7 +6,7 @@ import { userService } from '../services/user.service'
 import { orderService } from '../services/order.service'
 
 import { OrderList } from '../cmps/order-list'
-import { OrderEdit } from '../cmps/order-edit.jsx'
+import { OrderEdit } from '../cmps/order-edit'
 import { loadOrders } from '../store/actions/order.action'
 export const OrderApp = () => {
    const { t, i18n } = useTranslation();

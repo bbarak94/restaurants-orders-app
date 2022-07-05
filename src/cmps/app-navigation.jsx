@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
-import { UserMsg } from './user-msg.jsx'
+import { UserMsg } from './user-msg'
 import { useNavigate } from 'react-router-dom'
 import i18next from 'i18next'
 

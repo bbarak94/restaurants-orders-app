@@ -1,5 +1,5 @@
 
-import { OrderPreview } from "./order-preview.jsx"
+import { OrderPreview } from "./order-preview"
 import { useTranslation } from 'react-i18next';
 import { useEffectUpdate } from '../hooks/useEffectUpdate'
 import { loadOrders } from "../store/actions/order.action.js";

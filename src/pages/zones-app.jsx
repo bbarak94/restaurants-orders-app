@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { updateUser } from '../store/actions/user.action'
 import { useTranslation } from 'react-i18next';
-import { AdminSettings } from './admin-settings.jsx'
+import { AdminSettings } from './admin-settings'
 
 export const ZonesApp = () => {
    const { t, i18n } = useTranslation();

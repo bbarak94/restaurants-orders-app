@@ -1,9 +1,9 @@
-import { HomePage } from './pages/home-page.jsx'
-import { OrderApp } from './pages/order-app.jsx'
-import { PrinterApp } from './pages/printer-app.jsx'
-import { ZonesApp } from './pages/zones-app.jsx'
-import { SettingsApp } from './pages/settings-app.jsx'
-import { LoginSignup } from './pages/login-signup.jsx'
+import { HomePage } from './pages/home-page'
+import { OrderApp } from './pages/order-app'
+import { PrinterApp } from './pages/printer-app'
+import { ZonesApp } from './pages/zones-app'
+import { SettingsApp } from './pages/settings-app'
+import { LoginSignup } from './pages/login-signup'
 import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
 
 const routes = [
