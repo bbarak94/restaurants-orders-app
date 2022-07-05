@@ -1,0 +1,180 @@
+.app-navigation {
+    background-color: var(background-color);
+    // display: grid;
+    // width: 96%;
+    // height: 100%;
+    margin: 0 auto;
+    gap: 1.6rem;
+    // grid-template-columns: 14rem auto 23rem;
+
+
+
+    
+    // padding: 10px;
+    // background-color: $navigation;
+
+    aside {
+    background-color: var(background-color);
+
+        // height: 100%;
+        width: 14rem;
+        position: absolute;
+        top: -20px;
+        inset-inline-start: 0;
+        min-width: 250px;
+        // background-color: gray;
+        .top {
+            .close-btn {
+                position: relative;
+                right: 6px;
+            }
+
+            background-color: white;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 1.4rem;
+        }
+
+        .sidebar {
+            background-color: white;
+            height: 100%;
+
+            h3 {
+                display: flex;
+                width: 100%;
+                gap: rem(20px);
+                color: var(--color-info-dark);
+                margin-inline-start: 2rem;
+                align-items: center;
+                position: relative;
+                height: 3.8rem;
+                transition: all 300ms ease;
+                margin: 12px;
+                text-decoration: none;
+                span{
+                    transition: all 300ms ease;
+                }
+
+                .active {
+                    background-color: var(--color-light);
+                }
+            }
+
+            .logout-btn {
+                cursor: pointer;
+                position: absolute;
+                bottom: 4rem;
+                width: 100%;
+            }
+
+        }
+    }
+
+    nav .active h3 {
+        background: var(--color-light);
+        color: var(--color-primary);
+        margin-inline-start: 0;
+    }
+
+    nav .active h3:before {
+        content: "";
+        width: 6px;
+        height: 100%;
+        background: var(--color-primary);
+    }
+
+    nav .active span{
+        color: var(--color-primery);
+        margin-inline-start: (calc(1rem - 3px));
+    }
+
+    nav h3:hover{
+        color: var(--color-primary)
+    }
+    nav h3:hover span{
+        margin-left: 1rem;
+    }
+
+    nav .order-count{
+        background-color: var(--color-danger);
+        color: var(--color-white);
+        padding: 2px 10px;
+        font-size: 11px;
+        border-radius: var(--border-radius-1);
+
+    }
+
+
+    .welcome-msg {
+        position: relative;
+        top: 9px;
+        gap: 10px;
+
+    }
+
+    .user-info {
+        // background-color: $clr2;
+        // padding: 2px 8px;
+        padding-left: 100px;
+        color: $text;
+
+    }
+
+    .user-info .btn-link {
+        color: $bad;
+    }
+
+    nav {
+        height: 100vh;
+        font-size: 0.8em;
+        background-color: var(background-color);
+
+        // background-color: $navigation-bg;
+        // padding: 5px;
+        // margin-bottom: 20px;
+
+    }
+
+    // nav a:first-child {
+    // margin-right: 30px;
+    // }
+
+    // nav a {
+    //     font-size: 14px;
+    //     border-top: 1px solid $navbar;
+    //     padding: 0 5px;
+    //     margin: 10px;
+    // }
+
+
+    .user-msg {
+        color: white;
+        padding: 10px;
+        font-size: 1.4em;
+        position: fixed;
+        top: 0;
+        right: 0;
+        background-color: grey;
+    }
+
+    .user-msg button {
+        float: right;
+        border: 0;
+        border-radius: 50%;
+        margin: 5px;
+    }
+
+    .lang-option {
+        cursor: pointer;
+        text-align: center;
+        width: 100%;
+
+        option {
+            cursor: pointer;
+        }
+    }
+}
+
+@media(max-width:630px) {
+
+}

@@ -52,8 +52,8 @@ export const PrinterApp = () => {
    else if (!printers) return <h1>{user.fullname} {t('have no printers yet, please check your API KEY')}</h1>
    else return (
       <section className='printer-app'>
-         <div className='flex align-center' style={{ gap: '10px', marginBottom: '5px' }}>
-            <button onClick={() => { onRefreshPrinters() }}>Refresh</button>
+         <div className='flex column ' style={{ gap: '10px', marginBottom: '5px' }}>
+            <button style={{maxWidth: '42px'}} onClick={() => { onRefreshPrinters() }}>{t('Refresh')}</button>
             <h1 style={{ margin: 'auto 0' }}>{t('Total printers')}: {printers.length}</h1>
             <h1 style={{ margin: 'auto 0' }}>{t('Selected printers')}: {activeCount}</h1>
          </div>

@@ -36,7 +36,7 @@ export const OrderApp = () => {
    else return (
       <section className='order-app'>
          <div className='flex align-center' style={{ gap: '10px', marginBottom: '5px' }}>
-            <button onClick={() => { onRefreshOrders() }}>Refresh</button>
+            <button onClick={() => { onRefreshOrders() }}>{t('Refresh')}</button>
             <button onClick={() => setIsEdit(true)}>{t('Add an order')}</button>
             <h1 style={{ margin: 'auto 0' }}>{t('Orders count')}: {orders.length}</h1>
          </div>

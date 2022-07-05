@@ -14,7 +14,7 @@ const routes = [
    },
    {
       path: '/order',
-      component:<OrderApp /> ,
+      component: <OrderApp />,
       label: 'Orders',
    },
    {

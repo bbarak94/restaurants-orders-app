@@ -7,7 +7,7 @@ export const AppFooter = () => {
    return (
       <footer className="app-footer">
          <p>
-            {t('coffeerights - Barak Braun')}
+            {t('Copyrights - Barak Braun')}
          </p>
       </footer>
    )

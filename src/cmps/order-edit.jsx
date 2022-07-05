@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useTranslation } from 'react-i18next'
 
 import { orderService } from "../services/order.service"
-import { saveOrder, loadOrders, setOrder } from "../store/actions/order.action"
+import { saveOrder, loadOrders, setOrder, getActionSetOrder } from "../store/actions/order.action"
 
 import { userService } from "../services/user.service"
 
@@ -34,7 +34,7 @@ export const OrderEdit = ({ setIsEdit }) => {
       const getEmptyOrder = async () => {
          const emptyOrder = await orderService.getEmptyOrder()
          setNewOrder(emptyOrder)
-         set_id(emptyOrder._id||'')
+         set_id(emptyOrder._id || '')
          setCustomerName(emptyOrder.customerName)
          setCompany(emptyOrder.company)
          setAddress(emptyOrder.address)
@@ -106,10 +106,10 @@ export const OrderEdit = ({ setIsEdit }) => {
          status,
          totalPrice,
       }
-      if(newOrder) orderToSave['_id'] = newOrder._id
+      if (newOrder) orderToSave['_id'] = newOrder._id
       await dispatch((saveOrder(orderToSave)))
       await dispatch(loadOrders(user._id))
-      // await dispatch(getActionSetOrder(null))
+      await dispatch(getActionSetOrder(null))
       setIsEdit(false)
    }
 
@@ -137,9 +137,14 @@ export const OrderEdit = ({ setIsEdit }) => {
 
    if (!newOrder) return <h1>Loading...</h1>
 
-   else return (
+   return (
       <div className="edit-order" style={{ border: '2px black solid' }}>
-         <button onClick={() => setIsEdit(false)}>x</button>
+         <button onClick={async () => {
+            await dispatch(getActionSetOrder(null))
+            setIsEdit(false)
+         }
+         }
+         >x</button>
          <form className='order-edit-form flex' onSubmit={onSaveOrder}>
             <div className="flex column">
                <p>{t('Customer')} </p>
@@ -188,7 +193,7 @@ export const OrderEdit = ({ setIsEdit }) => {
             <div className="flex column">
                <p>{t('Total price')} </p>
                <input onChange={handleChange} className='order-input' value={totalPrice}
-                  placeholder={t('Total price')} variant='filled' type='text' name='totalPrice' />
+                  placeholder={t('Total price')} variant='filled' type='number' min={0} name='totalPrice' />
             </div>
 
             <div className="flex column">

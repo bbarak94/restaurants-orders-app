@@ -3,14 +3,14 @@ import { connect } from 'react-redux'
 
 import routes from './routes'
 
-import { AppHeader } from './cmps/app-header'
+import { AppNavigation } from './cmps/app-navigation'
 import { AppFooter } from './cmps/app-footer'
 
 function _RootCmp() {
     return (
         <>
             <main>
-            <AppHeader />
+            <AppNavigation />
                 <Routes>
                     {routes.map(route => <Route key={route.path} exact={true} element={route.component} path={route.path} />)}
                 </Routes>

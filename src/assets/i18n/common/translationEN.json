@@ -50,7 +50,7 @@
    "Change API-Key": "Change API-Key",
    "online": "online",
    "offline": "offline",
-   "coffeerights - Barak Braun": "coffeerights - Barak Braun",
+   "Copyrights - Barak Braun": "Copyrights - Barak Braun",
    "No orders": "No orders",
    "Add an order": "Add an order",
    "Estimate delivery": "Estimate delivery",
@@ -58,5 +58,10 @@
    "You're clients deserves the best": "You're clients deserves the best",
    "Call now to improve your service": "Call now to improve your service",
    "Admin settings": "Admin settings",
-   "Select": "Select"
+   "Select": "Select",
+   "Zones": "Zones",
+   "Refresh": "Refresh",
+   "Total printers": "כל המדפסות",
+   "Selected printers": "מדפסות נבחרות"
+   
 }

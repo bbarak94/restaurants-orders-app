@@ -16,6 +16,14 @@ export const OrderPreview = ({ setIsEdit, order }) => {
       return `${hour}:${minute}`
       // return `${hour}:${minute}:${second}`
    }
+   
+   console.log('document.body.dir:',document.body.dir)
+   if(document.body.dir==='ltr'){
+      var price=(+order.totalPrice).toLocaleString('en-US', { style: 'currency', currency: 'USD' })
+   }else{
+      var price=(+order.totalPrice).toLocaleString('il-HE', { style: 'currency', currency: 'ILS' })
+   }
+   
    return (
       <>
          <td className="package-id">
@@ -40,8 +48,11 @@ export const OrderPreview = ({ setIsEdit, order }) => {
             {order.source}
          </td>
          <td>
-            {order.totalPrice}
+            {price}
          </td>
+         {/* <td>
+            {order.totalPrice}
+         </td> */}
          <td>
             {getTime(order.createdAt)}
          </td>
@@ -64,7 +75,7 @@ export const OrderPreview = ({ setIsEdit, order }) => {
                await dispatch(setOrder(order._id))
                setIsEdit(true)
             }}>{t('Edit')}</button>
-         <button>{t('Print')}</button>
+            <button>{t('Print')}</button>
             <button onClick={() => {
                dispatch(removeOrder(order._id))
             }}>{t('Delete')}</button>

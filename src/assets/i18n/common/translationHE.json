@@ -50,7 +50,7 @@
    "Change API - Key": "שנה את קוד המערכת",
    "online": "מחובר",
    "offline": "מנותק",
-   "coffeerights - Barak Braun": "זכויות יוצרים - ברק בראון",
+   "Copyrights - Barak Braun": "זכויות יוצרים - ברק בראון",
    "No orders": "אין הזמנות",
    "Add an order": "הוסף הזמנה",
    "Estimate delivery": "זמן הגעה משוער",
@@ -58,6 +58,10 @@
    "You're clients deserves the best": "הלקוחות שלכם ראויים לטוב ביותר",
    "Call no to improve your service": "התקשר עכשיו כדי לשפר את השירות שלך",
    "Admin settings": "הגדרות מנהל",
-   "Select": "בחר"
+   "Select": "בחר",
+   "Zones": "אזורים",
+   "Refresh": "רענן",
+   "Total printers": "כל המדפסות",
+   "Selected printers": "מדפסות נבחרות"
 
 }

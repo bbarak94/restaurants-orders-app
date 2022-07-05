@@ -1,10 +1,10 @@
 // Colors
 $clr1: #2c3544;
-$header: #2c3544;
+$navigation: #2c3544;
 $logo-orange: #d09d5c;
 $logo-green: #91b64f;
 $navbar: #1cb0a4;
-$header-bg: #384152;
+$navigation-bg: #384152;
 $bg-color: #f3f3fb;
 $bad: #ff3531;
 $good: #49ad4d;
@@ -35,9 +35,9 @@ $clr11 : #e6e4e5;
    --color-background: #f6f6f9;
 
    --card-border-radius: 2rem;
-   --border-radius-1: #7380ec;
-   --border-radius-2: #7380ec;
-   --border-radius-3: #7380ec;
+   --border-radius-1: 0.4rem;
+   --border-radius-2: 0.8rem;
+   --border-radius-3: 1.2rem;
 
    --card-padding: 1.8rem;
    --padding-1: 1.2rem;
