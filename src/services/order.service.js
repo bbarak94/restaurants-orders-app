@@ -55,6 +55,7 @@ async function getEmptyOrder() {
       customerName: '',
       company: '',
       address: '',
+      addressComments: '',
       estSupply: est.setMinutes(now.getMinutes() + 20),
       source: '',
       totalPrice: '',

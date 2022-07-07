@@ -25,6 +25,7 @@
    "Customer": "Customer",
    "Company": "Company",
    "Address": "Address",
+   "Address comments": "Address comments",
    "Source": "Source",
    "Total price": "Total price",
    "Created at": "Created at",

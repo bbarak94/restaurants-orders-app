@@ -1,17 +1,16 @@
 import { useState } from 'react'
-import { useDispatch } from 'react-redux'
 import { useLocation, useNavigate } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
 import { useTranslation } from 'react-i18next';
-
 
 import { login, signup, loadUsers } from '../store/actions/user.action'
 import { loadOrders } from '../store/actions/order.action'
 
 export function LoginSignup() {
-    const { t, i18n } = useTranslation();
-
     const navigation = useNavigate()
     const dispatch = useDispatch()
+    const { t, i18n } = useTranslation();
+
     const location = useLocation()
     const [fullname, setFullname] = useState('')
     const [username, setUsername] = useState('')
@@ -31,7 +30,6 @@ export function LoginSignup() {
         }
         else {
             await dispatch(loadOrders(res._id))
-            // const orders = await dispatch(loadOrders(res._id))
         }
         navigation('/')
         setMsg('can\'t login, try again')

@@ -1,38 +1,22 @@
 .app-navigation {
     background-color: var(background-color);
-    // display: grid;
-    // width: 96%;
-    // height: 100%;
     margin: 0 auto;
     gap: 1.6rem;
-    // grid-template-columns: 14rem auto 23rem;
-
-
-
-
-    // padding: 10px;
-    // background-color: $navigation;
 
     aside {
         background-color: var(background-color);
-
-        // height: 100%;
         width: 14rem;
         position: absolute;
         top: -20px;
         inset-inline-start: 0;
         min-width: 250px;
 
-        // background-color: gray;
         .top {
-            // .close-btn {
-            //     position: relative;
-            //     right: 6px;
-            // }
-            .logo{
+            .logo {
                 width: 50%;
                 padding: 16px;
             }
+
             background-color: white;
             align-items: center;
             justify-content: space-between;
@@ -109,7 +93,6 @@
     }
 
     nav .order-count {
-
         background-color: var(--color-danger);
         color: var(--color-white) !important;
         padding: 4px 10px;
@@ -118,20 +101,15 @@
         min-width: 56px;
         text-align: center;
         min-height: 18px;
-
     }
-
 
     .welcome-msg {
         position: relative;
         top: 9px;
         gap: 10px;
-
     }
 
     .user-info {
-        // background-color: $clr2;
-        // padding: 2px 8px;
         padding-left: 100px;
         color: $text;
 
@@ -145,45 +123,10 @@
         height: 100vh;
         font-size: 0.8em;
         background-color: var(background-color);
-
-        // background-color: $navigation-bg;
-        // padding: 5px;
-        // margin-bottom: 20px;
-
-    }
-
-    // nav a:first-child {
-    // margin-right: 30px;
-    // }
-
-    // nav a {
-    //     font-size: 14px;
-    //     border-top: 1px solid $navbar;
-    //     padding: 0 5px;
-    //     margin: 10px;
-    // }
-
-
-    .user-msg {
-        color: white;
-        padding: 10px;
-        font-size: 1.4em;
-        position: fixed;
-        top: 0;
-        right: 0;
-        background-color: grey;
-    }
-
-    .user-msg button {
-        float: right;
-        border: 0;
-        border-radius: 50%;
-        margin: 5px;
     }
 
     .lang-continer {
         width: 100%;
-
     }
 }
 
@@ -203,5 +146,3 @@
         cursor: pointer;
     }
 }
-
-@media(max-width:630px) {}

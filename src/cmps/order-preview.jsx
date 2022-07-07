@@ -1,23 +1,35 @@
+import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux"
 import { useTranslation } from 'react-i18next';
 
-import { removeOrder, setOrder } from "../store/actions/order.action"
-import { useEffect, useState } from "react";
+import { removeOrder, setOrder, saveOrder } from "../store/actions/order.action"
+
 export const OrderPreview = ({ user, setIsEdit, order }) => {
-   const { t, i18n } = useTranslation();
    const dispatch = useDispatch()
+   const { t, i18n } = useTranslation();
+
    const [zoneName, setZoneName] = useState('')
+
    useEffect(() => {
-      getZone()
+      setZone()
    }, [])
 
-   const getZone = (ev) => {
+   const onPrint = async () => {
+      user.activePrinters.map((printer) => {
+         if (!printer.isSelected) return
+         else alert(`Printing order #${order.packageId} in printer ${printer.customName}`)
+      })
+      const newOrder = { ...order }
+      newOrder.status = 'Printed'
+      await dispatch((saveOrder(newOrder)))
+   }
+
+   const setZone = (ev) => {
       user.zones.map((zone, idx) => {
-         zone.streets.map((street, sIdx) => {
+         zone.streets.map((street) => {
             if (order.address.includes(zone.city) && order.address.includes(street)) setZoneName(zone.name)
          })
       })
-
    }
 
    const getTime = (timeStamp) => {
@@ -26,10 +38,7 @@ export const OrderPreview = ({ user, setIsEdit, order }) => {
       hour = ('0' + hour).slice(-2);
       let minute = time.getMinutes();
       minute = ('0' + minute).slice(-2);
-      // let second = time.getSeconds();
-      // second = ('0' + second).slice(-2);
       return `${hour}:${minute}`
-      // return `${hour}:${minute}:${second}`
    }
 
    if (document.body.dir === 'ltr') {
@@ -60,6 +69,9 @@ export const OrderPreview = ({ user, setIsEdit, order }) => {
             {order.address}
          </td>
          <td>
+            {order.addressComments}
+         </td>
+         <td>
             {getTime(order.estSupply)}
          </td>
          <td>
@@ -68,23 +80,12 @@ export const OrderPreview = ({ user, setIsEdit, order }) => {
          <td>
             {price}
          </td>
-         {/* <td>
-            {order.totalPrice}
-         </td> */}
          <td>
             {getTime(order.createdAt)}
          </td>
          <td>
             {order.dishes}
          </td>
-         {/* <td>
-            {order.dishes.map((dish, idx) => {
-               return (
-                  <p key={idx}>{dish}</p>
-               )
-            }
-            )}
-         </td> */}
          <td>
             {t(`${order.status}`)}
          </td>
@@ -93,7 +94,7 @@ export const OrderPreview = ({ user, setIsEdit, order }) => {
                await dispatch(setOrder(order._id))
                setIsEdit(true)
             }}>{t('Edit')}</button>
-            <button>{t('Print')}</button>
+            <button onClick={() => onPrint()}>{t('Print')}</button>
             <button onClick={() => {
                dispatch(removeOrder(order._id))
             }}>{t('Delete')}</button>

@@ -1,19 +1,24 @@
 import { useEffect, useState } from "react"
 import { useDispatch } from 'react-redux'
-import { updateUser } from '../store/actions/user.action';
 import { useTranslation } from 'react-i18next'
 
-export const StreetPreview = ({ idx,sIdx, user, zones, zone,  street }) => {
-   const [streetName, setStreetName] = useState(street)
-   const [isStreetEdit, setIsStreetEdit] = useState(false)
-   const dispatch = useDispatch()
+import { updateUser } from '../store/actions/user.action';
 
+export const StreetPreview = ({ idx, sIdx, user, zones, zone, street }) => {
+   const dispatch = useDispatch()
    const { t, i18n } = useTranslation();
 
+   const [streetName, setStreetName] = useState(street)
+   const [isStreetEdit, setIsStreetEdit] = useState(false)
 
    useEffect(() => {
       if (!streetName) setIsStreetEdit(true)
    }, [])
+
+   const onClose = (ev) => {
+      setIsStreetEdit(false)
+      setStreetName(street)
+   }
 
    const handleChange = (ev) => {
       const value = ev.target?.value
@@ -32,20 +37,22 @@ export const StreetPreview = ({ idx,sIdx, user, zones, zone,  street }) => {
       var newUser = { ...user }
       newUser.zones = newZones
       await dispatch(updateUser(newUser))
-
    }
-   return (<div className="street-preview flex align-center">
-      {(!isStreetEdit) && (<div className="street-name-preview" onClick={() => { setIsStreetEdit(true) }}>
-         <h3>{street}</h3>
-      </div>)}
-      {(isStreetEdit) && (<form className="street-name-edit flex align-center">
-         <input autoComplete='off' onChange={handleChange} autoFocus value={streetName} placeholder={t('Street name')} type='text' name='street' />
-         <button className="save-btn" onClick={(ev) => onSave(ev)}>{t('Save')}</button>
-         <button className="close-btn" onClick={() => { 
-            setIsStreetEdit(false)
-            setStreetName(street)
-             }}>x</button>
-      </form>)}
-      {/* <button>edit</button> */}
-   </div>)
+
+   return (
+      <div className="street-preview flex align-center">
+         {(!isStreetEdit) && (
+            <div className="street-name-preview" onClick={() => { setIsStreetEdit(true) }}>
+               <h3>{street}</h3>
+            </div>
+         )}
+         {(isStreetEdit) && (
+            <form className="street-name-edit flex align-center">
+               <input autoComplete='off' onChange={handleChange} autoFocus value={streetName} placeholder={t('Street name')} type='text' name='street' />
+               <button className="save-btn" onClick={(ev) => onSave(ev)}>{t('Save')}</button>
+               <button className="close-btn" onClick={(ev) => onClose}>x</button>
+            </form>
+         )}
+      </div>
+   )
 }

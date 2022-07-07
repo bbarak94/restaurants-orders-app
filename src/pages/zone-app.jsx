@@ -1,30 +1,34 @@
 import React, { useEffect, useState } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
-import { updateUser } from '../store/actions/user.action'
-import { useTranslation } from 'react-i18next';
-import { AdminSettings } from './admin-settings'
-import { ZoneEdit } from '../cmps/zone-edit.jsx'
-import { ZoneList } from '../cmps/zone-list.jsx'
-import { loadUsers } from '../store/actions/user.action'
 import { useNavigate } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux'
+import { useTranslation } from 'react-i18next';
+
+import { loadUsers, updateUser } from '../store/actions/user.action'
+
+import { ZoneList } from '../cmps/zone-list.jsx'
 
 export const ZoneApp = () => {
+   const dispatch = useDispatch()
+   const navigation = useNavigate()
    const { t, i18n } = useTranslation();
 
    const { user } = useSelector((storeState) => storeState.userModule)
+
    const [zones, setApi] = useState(user.zones)
-   const navigation = useNavigate()
-   const dispatch = useDispatch()
 
    useEffect(() => {
-      if (!user) {
-         navigation('/')
-      }
+      if (!user) { navigation('/') }
    }, [])
 
-   if (!user) return <section className='zones-app'>
-      <h1 className='title'>{t('You need to login first')}</h1>
-   </section>
+   if (!user) return (
+      <section className='zones-app'>
+         <h1 className='title'>{t('You need to login first')}</h1>
+      </section>
+   )
+
+   const onRefreshZones = async () => {
+      await dispatch(loadUsers())
+   }
 
    const onAdd = async (ev) => {
       ev.preventDefault()
@@ -40,10 +44,6 @@ export const ZoneApp = () => {
       var newUser = { ...user }
       newUser.zones = newZones
       await dispatch(updateUser(newUser))
-   }
-
-   const onRefreshZones = async () => {
-      await dispatch(loadUsers())
    }
 
    return (

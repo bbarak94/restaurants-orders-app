@@ -1,16 +1,16 @@
-.app-footer{
-   p{
+.app-footer {
+   p {
       padding: unset;
       margin: unset;
       font-size: 18px;
    }
+
    display: flex;
    justify-content: center;
    align-content: center;
    background-color: $navigation-bg;
    color: $navbar;
    padding: 14px;
-   // margin: 10px;
    position: fixed;
    margin-top: 15px;
    min-width: 100%;

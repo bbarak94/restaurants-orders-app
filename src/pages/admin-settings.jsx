@@ -5,16 +5,15 @@ import { loadUsers, updateUser } from '../store/actions/user.action'
 
 
 export const AdminSettings = () => {
+   const { t, i18n } = useTranslation();
+   const dispatch = useDispatch()
+
    const { user } = useSelector((storeState) => storeState.userModule)
    const { users } = useSelector((storeState) => storeState.userModule)
 
+   const [userToEdit, setUserToEdit] = useState(user)
    const [userId, setUserId] = useState(user._id)
    const [isEdit, setIsEdit] = useState(false)
-
-   const [userToEdit, setUserToEdit] = useState(user)
-
-   const { t, i18n } = useTranslation();
-   const dispatch = useDispatch()
 
    const handleChange = (ev) => {
       const value = ev.target?.value
@@ -26,14 +25,13 @@ export const AdminSettings = () => {
       const selected = users.find(u => u._id === userId)
       setUserToEdit(selected)
       setIsEdit(true)
-
    }
 
    const handleEditChange = (ev) => {
       const field = ev.target?.name
       const value = ev.target?.value
-
       const newUser = { ...userToEdit }
+
       switch (field) {
          case 'fullname':
             newUser.fullname = value
@@ -74,7 +72,7 @@ export const AdminSettings = () => {
          {isEdit &&
             <section className="admin-edit">
                <form className="flex column">
-               <button onClick={() => { setIsEdit(false) }} className="flex justify-center align-center esc-btn">x</button>
+                  <button onClick={() => { setIsEdit(false) }} className="flex justify-center align-center esc-btn">x</button>
                   <div className="flex align-center">
                      <label>{t('Fullname')}:</label>
                      <input autoComplete='off' onChange={handleEditChange} autoFocus value={userToEdit.fullname} placeholder={t('Fullname')} type='text' name='fullname' />
@@ -84,7 +82,7 @@ export const AdminSettings = () => {
                      <input autoComplete='off' onChange={handleEditChange} value={userToEdit.username} placeholder={t('Username')} type='text' name='username' />
                   </div>
                   <div className="flex align-center">
-                  <label>{t('Permission')}:</label>
+                     <label>{t('Permission')}:</label>
                      <select onChange={handleEditChange} value={userToEdit.isAdmin} name='isAdmin'>
                         <option value={false}>{t('Not admin')}</option>
                         <option value={true}>{t('Admin')}</option>

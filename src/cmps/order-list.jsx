@@ -1,9 +1,12 @@
 
-import { OrderPreview } from "./order-preview"
-import { useTranslation } from 'react-i18next';
-import { useEffectUpdate } from '../hooks/useEffectUpdate'
-import { loadOrders } from "../store/actions/order.action.js";
 import { useSelector } from "react-redux";
+import { useTranslation } from 'react-i18next';
+
+import { useEffectUpdate } from '../hooks/useEffectUpdate'
+
+import { loadOrders } from "../store/actions/order.action.js";
+
+import { OrderPreview } from "./order-preview"
 
 export const OrderList = ({ setIsEdit, orders }) => {
    const { t, i18n } = useTranslation();
@@ -22,6 +25,7 @@ export const OrderList = ({ setIsEdit, orders }) => {
                <td>{t('Customer')}</td>
                <td>{t('Company')}</td>
                <td>{t('Address')}</td>
+               <td>{t('Address comments')}</td>
                <td>{t('Estimate delivery')}</td>
                <td>{t('Source')}</td>
                <td>{t('Total price')}</td>
@@ -35,11 +39,9 @@ export const OrderList = ({ setIsEdit, orders }) => {
             {orders.map((order, idx) => {
                return (
                   <tr key={idx}>
-                     <OrderPreview setIsEdit={setIsEdit} order={order} user={user}/>
-                  </tr>
-               )
-            }
-            )}
+                     <OrderPreview setIsEdit={setIsEdit} order={order} user={user} />
+                  </tr>)
+            })}
          </tbody>
       </table>
    )

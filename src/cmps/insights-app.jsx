@@ -1,23 +1,21 @@
 
 
+import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 
 import RestaurantIcon from '@mui/icons-material/Restaurant';
 import ReceiptLongIcon from '@mui/icons-material/ReceiptLong';
 import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
-import { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
 
 export const InsightsApp = () => {
-
    const { t, i18n } = useTranslation()
    const [totalSales, setTotalSales] = useState(25534)
    const [totalOrders, setTotalOrders] = useState(984)
    const [totalClients, setTotalClients] = useState(65)
-   const [dir, setDir] = useState(document.body.dir)
 
-   const { user } = useSelector((storeState) => storeState.userModule)
    const { users } = useSelector((storeState) => storeState.userModule)
+   const { user } = useSelector((storeState) => storeState.userModule)
    const { orders } = useSelector((storeState) => storeState.orderModule)
 
    useEffect(() => {

@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 import { useSelector } from "react-redux";
-import { useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
-import { UserMsg } from './user-msg'
+
 import i18next from 'i18next'
+
 
 import { userService } from '../services/user.service.js'
 import routes from '../routes'
@@ -19,28 +19,20 @@ import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
 import VpnKeyTwoToneIcon from '@mui/icons-material/VpnKeyTwoTone';
 import FaceTwoToneIcon from '@mui/icons-material/FaceTwoTone';
 import LogoutIcon from '@mui/icons-material/Logout';
-import CloseIcon from '@mui/icons-material/Close';
 
-export const AppNavigation = ({ theme, toggleTheme }) => {
-   const [lang, setLang] = useState('en')
+export const AppNavigation = () => {
    const navigation = useNavigate()
    const { t, i18n } = useTranslation();
+   const [lang, setLang] = useState('en')
 
-
-
-   const user = userService.getLoggedinUser()
    const { orders } = useSelector((storeState) => storeState.orderModule)
+   const user = userService.getLoggedinUser()
 
    const onLogout = () => {
       userService.logout()
       navigation('/')
       window.location.reload()
    }
-
-   const onLogin = () => {
-      navigation('/login')
-   }
-
 
    const handelLangChange = (ev) => {
       const selectedLang = ev.target.value
@@ -53,18 +45,13 @@ export const AppNavigation = ({ theme, toggleTheme }) => {
    return (
       <div className="app-navigation">
          <aside>
-            <UserMsg />
-            {/* {!user && <div className='welcome-msg flex align-center justify-center'>
-               <h3 style={{ margin: '5px' }}>{t('Welcome guest')}</h3>
-               <button className='good' onClick={() => onLogin()}>{t('Login')}</button>
-            </div>} */}
+            {/* <UserMsg /> */}
             <div className='sidebar'>
                <nav>
                   <div className='top flex align-center space-between'>
                      <div className='logo flex img-container'>
                         <img src={logo} />
                      </div>
-                     {/* <CloseIcon className='close-btn' /> */}
                   </div>
                   {routes.map(route => <NavLink className='nav-link' key={route.path} to={route.path}>
                      <h3>
@@ -85,11 +72,9 @@ export const AppNavigation = ({ theme, toggleTheme }) => {
                         <option value="en">{t('langEn')}</option>
                      </select>
                   </div>
-                  {/* <button onClick={()=>toggleTheme()} className='flex align-center justify-center' style={{margin:'10px auto'}}>Toggle Theme</button> */}
                </nav>
                {user && (
                   <h3 onClick={() => onLogout()} className='logout-btn'>
-                     {/* <h3 style={{ margin: '5px' }}>{t('Welcome')} {user.fullname}</h3> */}
                      <LogoutIcon />
                      {t('Logout')}
                   </h3>

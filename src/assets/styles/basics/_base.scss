@@ -9,20 +9,6 @@
    box-sizing: border-box;
 }
 
-// * {
-//    box-sizing: border-box;
-// }
-
-// #light {
-//    color: black;
-//    background-color: var(--color-background);
-// }
-
-// #dark {
-//    color: var(--color);
-//    background-color: var(--color-dark);
-// }
-
 ::selection {
    background-color: $navigation;
    color: $bg-color;
@@ -30,23 +16,12 @@
 
 #root {
    max-height: 100vh;
-   // display: grid;
-   // grid-template-rows: 120px 1fr 50px;
 }
-
-
 
 html {
    font-family: Poppins, sans-serif;
    font-size: rem(14px);
 }
-
-// html {
-//    background-color: $bg-color ;
-//    font-family: montserrat;
-//    line-height: 1.6;
-//    color: $text;
-// }
 
 body {
    width: 100vw;
@@ -61,7 +36,6 @@ body {
    }
 }
 
-
 main {
    display: grid;
    grid-template-columns: 18rem auto;
@@ -69,26 +43,15 @@ main {
    overflow-y: auto;
 }
 
-// body {
-//    font-size: rem(18px);
-//    margin: 0;
-
-//    &.rtl {
-//       direction: rtl;
-//    }
-// }
-
 h1,
 h2,
 h3,
 h4,
 h5,
 h6 {
-   // font-family: caveat;
    margin: 0 0 0.6em;
    line-height: 1;
 }
-
 
 section,
 footer {
@@ -109,11 +72,6 @@ a {
    color: var(--color-dark);
    width: 100%;
 }
-
-// a {
-//    color: white;
-//    text-decoration: none;
-// }
 
 .title {
    margin: 35px;

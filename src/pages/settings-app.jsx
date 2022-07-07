@@ -1,25 +1,27 @@
 import React, { useEffect, useState } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
-
-import { updateUser } from '../store/actions/user.action'
+import { useSelector, useDispatch } from 'react-redux'
 import { useTranslation } from 'react-i18next';
-import { AdminSettings } from './admin-settings'
+
 import { userService } from '../services/user.service';
+import { updateUser } from '../store/actions/user.action'
+
+import { AdminSettings } from './admin-settings'
 
 export const SettingsApp = () => {
-   const { t, i18n } = useTranslation();
+   const navigation = useNavigate()
    const dispatch = useDispatch()
+   const { t, i18n } = useTranslation();
+
    const user = userService.getLoggedinUser()
+
    const [api, setApi] = useState(user?.API_KnEY)
 
-   const navigation = useNavigate()
    useEffect(() => {
       if (!user) {
          navigation('/')
       }
    }, [])
-
 
    const onChangeApi = async (ev = null) => {
       if (!user) return
@@ -34,17 +36,11 @@ export const SettingsApp = () => {
       setApi(value)
    }
 
-
-
    if (!user) return <section className='settings-app'>
       <h1 className='title'>{t('Please login to see your settings')}</h1>
    </section>
 
-   if (user.isAdmin) return (
-      <AdminSettings />
-   )
-
-
+   if (user.isAdmin) return (<AdminSettings />)
 
    return (
       <section className='settings-app flex align-center space-around'>
@@ -61,5 +57,4 @@ export const SettingsApp = () => {
          </form>
       </section>
    )
-
 }

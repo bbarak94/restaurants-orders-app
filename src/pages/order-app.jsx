@@ -4,24 +4,23 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useTranslation } from 'react-i18next';
 
 import { loadOrders } from '../store/actions/order.action'
-
 import { userService } from '../services/user.service'
-import { orderService } from '../services/order.service'
-
-import { OrderList } from '../cmps/order-list'
-import { OrderEdit } from '../cmps/order-edit'
 
 import { InsightsApp } from '../cmps/insights-app'
+import { OrderEdit } from '../cmps/order-edit'
+import { OrderList } from '../cmps/order-list'
 
 export const OrderApp = () => {
-   const { t, i18n } = useTranslation();
-   const [isEdit, setIsEdit] = useState(false)
-   const user = userService.getLoggedinUser()
-   const { orders } = useSelector((storeState) => storeState.orderModule)
-   const dispatch = useDispatch()
    const navigation = useNavigate()
+   const dispatch = useDispatch()
+   const { t, i18n } = useTranslation();
+
+   const [isEdit, setIsEdit] = useState(false)
+
+   const { orders } = useSelector((storeState) => storeState.orderModule)
+   const user = userService.getLoggedinUser()
+
    useEffect(() => {
-      // if (!user) return
       if (!user) {
          navigation('/')
          return
@@ -38,6 +37,7 @@ export const OrderApp = () => {
          <h1 className='title'>{t('Please login to see your orders')}</h1>
       </section>
    )
+
    else if (!orders?.length) return (
       <section className='order-app'>
          <h1>{t('No orders')}</h1>
@@ -45,6 +45,7 @@ export const OrderApp = () => {
          {(isEdit) && <OrderEdit setIsEdit={setIsEdit} />}
       </section>
    )
+
    else return (
       <section className='order-app'>
          <InsightsApp totalOrders={orders.length} totalClients={orders.length} totalSales={orders.length} />

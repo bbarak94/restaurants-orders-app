@@ -6,16 +6,20 @@ button {
     margin: 5px;
     border-radius: 5px;
     cursor: pointer;
-    &:hover{
-        color:white;
+
+    &:hover {
+        color: white;
     }
-    &.bad{
-        background-color: $bad;        
+
+    &.bad {
+        background-color: $bad;
     }
-    &.good{
+
+    &.good {
         background-color: $good;
     }
-    &.save{
+
+    &.save {
         align-self: flex-end;
         max-height: 24.5px;
     }
