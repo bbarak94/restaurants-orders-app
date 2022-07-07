@@ -64,7 +64,7 @@ export const PrinterPreview = ({ onRefreshPrinters, user, printer }) => {
          >{(printer.customName) ? printer.customName : printer.name}</h4>
          }
          {isEdit &&
-            <form onClick={(ev) => { ev.stopPropagation() }} className='flex column' style={{ width: '100%' }} onSubmit={onChangeName}>
+            <form onClick={(ev) => { ev.stopPropagation() }} className='flex column' style={{ width: '100%' }} onSubmit={(ev) => onChangeName(ev)}>
                <button className="close-btn" onClick={() => setIsEdit(false)}>
                   <h3>x</h3>
                </button>

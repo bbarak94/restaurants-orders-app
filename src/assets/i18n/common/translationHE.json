@@ -85,8 +85,9 @@
    "City": "עיר",
    "Streets": "רחובות",
    "Printing order": "מדפיס הזמנה",
-   "in printer": "במדפסת",
-   "Beteabon is a decision support and management system for the delivery system in your restaurant,The system performs automation and customization for delivery orders": "בתאבון הינה מערכת תומכת החלטה וניהול עבור מערך המשלוחים במסעדה שלך, המערכת מבצעת אוטומציה וקסטומיזציה להזמנות משלוח "
+   "To printer": "במדפסת",
+   "Beteabon is a decision support and management system for the delivery system in your restaurant,The system performs automation and customization for delivery orders": "בתאבון הינה מערכת תומכת החלטה וניהול עבור מערך המשלוחים במסעדה שלך, המערכת מבצעת אוטומציה וקסטומיזציה להזמנות משלוח ",
+   "Package id": "מספר הזמנה"
 
 
 }

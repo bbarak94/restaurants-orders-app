@@ -4,21 +4,31 @@ import { useTranslation } from 'react-i18next';
 
 import { removeOrder, setOrder, saveOrder } from "../store/actions/order.action"
 
+import { PrinterModal } from './printer-modal'
+
 export const OrderPreview = ({ user, setIsEdit, order }) => {
    const dispatch = useDispatch()
    const { t, i18n } = useTranslation();
 
    const [zoneName, setZoneName] = useState('')
+   const [modal, setModal] = useState(false);
 
    useEffect(() => {
       setZone()
    }, [])
 
+   const toggleModal = () => {
+      setModal(!modal);
+   }
+
+   if (modal) {
+      document.body.classList.add('active-modal')
+   } else {
+      document.body.classList.remove('active-modal')
+   }
+
    const onPrint = async () => {
-      user.activePrinters.map((printer) => {
-         if (!printer.isSelected) return
-         else alert(`${t('Printing order')} '#${order.packageId}' ${t('in printer')} '${printer.customName}'`)
-      })
+      toggleModal()
       const newOrder = { ...order }
       newOrder.status = 'Printed'
       await dispatch((saveOrder(newOrder)))
@@ -50,6 +60,7 @@ export const OrderPreview = ({ user, setIsEdit, order }) => {
    return (
       <>
          <td className="package-id">
+         {modal && <PrinterModal toggleModal={toggleModal} modal={modal} order={order} user={user} getTime={getTime} zoneName={zoneName} />}
             {order.packageId}
          </td>
          <td>

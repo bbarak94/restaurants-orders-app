@@ -86,9 +86,8 @@
    "City": "City",
    "Streets": "Streets",
    "Printing order": "Printing order",
-   "in printer": "in printer"
-
-
+   "To printer": "To printer",
+   "Package id": "Package id"
 
    
 }
