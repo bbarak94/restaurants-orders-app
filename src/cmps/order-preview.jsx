@@ -17,7 +17,7 @@ export const OrderPreview = ({ user, setIsEdit, order }) => {
    const onPrint = async () => {
       user.activePrinters.map((printer) => {
          if (!printer.isSelected) return
-         else alert(`Printing order #${order.packageId} in printer ${printer.customName}`)
+         else alert(`${t('Printing order')} '#${order.packageId}' ${t('in printer')} '${printer.customName}'`)
       })
       const newOrder = { ...order }
       newOrder.status = 'Printed'
