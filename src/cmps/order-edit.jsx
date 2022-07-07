@@ -138,22 +138,17 @@ export const OrderEdit = ({ setIsEdit }) => {
    if (!newOrder) return <h1>Loading...</h1>
 
    return (
-      <div className="edit-order" style={{ border: '2px black solid' }}>
-         <button onClick={async () => {
-            await dispatch(getActionSetOrder(null))
-            setIsEdit(false)
-         }
-         }
-         >x</button>
+      <div className="edit-order flex">
+
          <form className='order-edit-form flex' onSubmit={onSaveOrder}>
             <div className="flex column">
                <p>{t('Customer')} </p>
-               <input onChange={handleChange} autoFocus className='order-input' value={customerName}
+               <input autoComplete='off' onChange={handleChange} autoFocus className='order-input' value={customerName}
                   placeholder={t('Customer')} variant='filled' type='text' name='customer' />
             </div>
             <div className="flex column">
                <p>{t('Company')} </p>
-               <input onChange={handleChange} className='order-input' value={company}
+               <input autoComplete='off' onChange={handleChange} className='order-input' value={company}
                   placeholder={t('Company')} variant='filled' type='text' name='company' />
             </div>
 
@@ -170,35 +165,33 @@ export const OrderEdit = ({ setIsEdit }) => {
                      componentRestrictions: { country: "il" },
                   }}
                   onPlaceSelected={(place) => {
-                     // console.log(place)
                      setAddress(place.formatted_address)
                   }}
                />
-               {/* <input onChange={handleChange} className='order-input' value={address}
-                  placeholder={t('Address')} variant='filled' type='text' name='address' /> */}
+
             </div>
 
             <div className="flex column">
                <p>{t('Estimate supply time')} </p>
-               <input onChange={handleChange} className='order-input' value={getTime(estSupply)}
+               <input autoComplete='off' onChange={handleChange} className='order-input' value={getTime(estSupply)}
                   placeholder={t('Estimate supply in minutes')} variant='filled' type='time' name='estSupply' />
 
             </div>
             <div className="flex column">
                <p>{t('Source')} </p>
-               <input onChange={handleChange} className='order-input' value={source}
+               <input autoComplete='off' onChange={handleChange} className='order-input' value={source}
                   placeholder={t('Source')} variant='filled' type='text' name='source' />
             </div>
 
             <div className="flex column">
                <p>{t('Total price')} </p>
-               <input onChange={handleChange} className='order-input' value={totalPrice}
+               <input autoComplete='off' onChange={handleChange} className='order-input' value={totalPrice}
                   placeholder={t('Total price')} variant='filled' type='number' min={0} name='totalPrice' />
             </div>
 
             <div className="flex column">
                <p>{t('Dishes')} </p>
-               <input onChange={handleChange} className='order-input' value={dishes}
+               <input autoComplete='off' onChange={handleChange} className='order-input' value={dishes}
                   placeholder={t('Dishes')} variant='filled' type='text' name='dishes' />
             </div>
 
@@ -208,13 +201,17 @@ export const OrderEdit = ({ setIsEdit }) => {
                   <option value="Not printed">{t('Not printed')}</option>
                   <option value="Printed">{t('Printed')}</option>
                </select>
-               {/* <input onChange={handleChange} className='order-input' value={status}
-                  placeholder={t('Status')} variant='filled' type='text' name='status' /> */}
             </div>
 
 
             <button className="save" onClick={onSaveOrder}>{t('Save')}</button>
          </form>
+         <button className="close-btn" onClick={async () => {
+            await dispatch(getActionSetOrder(null))
+            setIsEdit(false)
+         }
+         }
+         >x</button>
 
       </div>)
 }

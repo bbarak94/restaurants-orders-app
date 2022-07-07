@@ -1,167 +1,50 @@
+.title {
+   margin: 35px;
+}
+
 .home-page {
-   width: 100%;
-   height: 100%;
+   background: url(../../img/hero.jpg) top;
+   background-size: 100% 100%;
+   // width: 100%;
+   height: 100vh;
    margin: 0;
    padding: 20px;
 
-   .title {
-      margin: 35px;
-   }
+   .main-text {
+      text-align: center;
+      width: 80%;
+      margin: 200px auto 0 auto;
 
+      .title1,
+      .title2 {
+         color: white;
+         // margin: 100px 0 0 0 0 !important;
+      }
 
+      .title1 {
+         font-size: 40px;
+      }
 
-   .insights {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.6rem;
+      .title2 {
+         line-height: 1.2;
+      }
 
-      .card {
-         background: var(--color-white);
-         padding: var(--card-padding);
-         border-radius: var(--card-border-radius);
-         margin-top: 1rem;
-         box-shadow: var(--box-shadow);
-         transition: all 300ms ease;
+      button {
+         background-color: #56B68B;
+         border: 3px solid #56B68B;
+         color: white;
+         padding: 15px 25px;
+         font-size: 16px;
+         transition: all 0.3s ease-out;
+         border-radius: 4px;
 
          &:hover {
-            box-shadow: none;
-            transition: all 300ms ease;
+            background-color: #24a86d;
+            border-color: #24a86d;
          }
-
-         .icon-container {
-            display: flex;
-            align-content: center;
-            justify-content: center;
-            padding: 5px;
-            width: 50px;
-            height: 50px;
-            background-color: var(--color-primary);
-            padding: 0.5rem;
-            border-radius: 50%;
-            color: var(--color-white);
-            margin-bottom: 10px;
-
-            &.orders {
-               background-color: var(--color-danger);
-            }
-
-            &.restaurants {
-               background-color: var(--color-success);
-
-            }
-         }
-
-         .middle {
-            display: flex;
-            align-items: center;
-            // align-content: space-between;
-            justify-content: space-between;
-         }
-
-         .progress {
-            position: relative;
-            width: 92px;
-            height: 92px;
-            border-radius: 50%;
-
-            svg {
-               width: 7rem;
-               height: 7rem;
-
-               circle {
-                  background-color: black;
-                  fill: none;
-                  stroke: var(--color-primary);
-                  stroke-width: 14;
-                  stroke-linecap: round;
-                  transform: translate(5px, 5px);
-                  stroke-dasharray: 110;
-                  stroke-dashoffset: 92;
-               }
-            }
-
-            .orders {}
-
-         }
-
-         .sales-progress {
-            svg {
-               circle {
-                  stroke-dashoffset: -30;
-                  stroke-dasharray: 200;
-               }
-            }
-         }
-
-         .orders-progress {
-            svg {
-               circle {
-                  stroke-dashoffset: 20;
-                  stroke-dasharray: 80;
-               }
-            }
-         }
-
-         .restaurants-progress {
-            svg {
-               circle {
-                  stroke-dashoffset: 35;
-                  stroke-dasharray: 110;
-               }
-            }
-         }
-
-         h1 {
-            font-size: 28px;
-
-            padding: 0;
-            font-weight: 200;
-         }
-
-         h3 {
-            font-size: 16px;
-
-            padding: 16px 4px;
-         }
-
-         h4 {
-            font-size: 14px;
-            font-weight: 100;
-         }
-
-         .number {
-            position: relative;
-            bottom: 73px;
-            left: 31px;
-         }
-
-
-
-
-
       }
 
-   }
 
-
-
-
-   // .home-section {
-   //    justify-content: space-around;
-   // }
-
-   h1 {
-      padding: 10px;
-      font-size: 40px;
-
-      &.title1,
-      &.title3 {
-         color: $logo-green;
-      }
-
-      &.title2 {
-         color: $logo-orange
-      }
    }
 
    .background-container {
@@ -170,15 +53,152 @@
    }
 }
 
+
+
+.insights {
+   display: grid;
+   grid-template-columns: repeat(3, 1fr);
+   gap: 1.6rem;
+   margin-bottom: 20px;
+
+   .card {
+      display: flex;
+      justify-content: space-between;
+      background: var(--color-white);
+      padding: 16px;
+      border-radius: var(--card-border-radius);
+      margin-top: 1rem;
+      box-shadow: var(--box-shadow);
+      transition: all 300ms ease;
+
+      &:hover {
+         box-shadow: none;
+         transition: all 300ms ease;
+      }
+
+      .icon-container {
+         display: flex;
+         align-self: center;
+         justify-content: flex;
+         padding: 5px;
+         width: 70px;
+         height: 70px;
+         background-color: var(--color-primary);
+         padding: 0.5rem;
+         border-radius: 50%;
+         color: var(--color-white);
+         margin: 0;
+
+         &.orders {
+            background-color: var(--color-danger);
+         }
+
+         &.restaurants {
+            background-color: var(--color-success);
+
+         }
+      }
+
+      .middle {
+         display: flex;
+         align-items: center;
+         // align-content: space-between;
+         justify-content: space-between;
+      }
+
+      .progress {
+         position: relative;
+         width: 92px;
+         height: 92px;
+         border-radius: 50%;
+
+         svg {
+            width: 7rem;
+            height: 7rem;
+
+            circle {
+               background-color: black;
+               fill: none;
+               stroke: var(--color-primary);
+               stroke-width: 14;
+               stroke-linecap: round;
+               transform: translate(5px, 5px);
+               stroke-dasharray: 110;
+               stroke-dashoffset: 92;
+            }
+         }
+
+         .orders {}
+
+      }
+
+      .sales-progress {
+         svg {
+            circle {
+               stroke-dashoffset: -30;
+               stroke-dasharray: 200;
+            }
+         }
+      }
+
+      .orders-progress {
+         svg {
+            circle {
+               stroke-dashoffset: 20;
+               stroke-dasharray: 80;
+            }
+         }
+      }
+
+      .restaurants-progress {
+         svg {
+            circle {
+               stroke-dashoffset: 35;
+               stroke-dasharray: 110;
+            }
+         }
+      }
+
+      h1 {
+         font-size: 28px;
+
+         padding: 0;
+         font-weight: 200;
+      }
+
+      h3 {
+         font-size: 16px;
+
+         padding: 16px 4px;
+      }
+
+      h4 {
+         font-size: 14px;
+         font-weight: 100;
+      }
+
+      .number {
+         position: relative;
+         bottom: 73px;
+         inset-inline-start: 40px;
+      }
+
+
+
+
+
+   }
+
+}
+
+
+
 @media(max-width:1200px) {
    .home-page {
-
-
       .insights {
-         display: grid;
-         grid-template-columns: repeat(1,1fr);
-         grid-template-rows: repeat(3, 1fr);
+         // display: grid;
+         // grid-template-columns: repeat(1, 1fr);
+         // grid-template-rows: repeat(3, 1fr);
       }
    }
 }
-

@@ -18,27 +18,21 @@ export const AdminSettings = () => {
 
    const handleChange = (ev) => {
       const value = ev.target?.value
-      console.log('value:', value)
       setUserId(value)
    }
 
    const selectUser = (ev) => {
       ev.preventDefault()
-      console.log('userId:', userId)
       const selected = users.find(u => u._id === userId)
-      console.log('selected:', selected)
       setUserToEdit(selected)
       setIsEdit(true)
-      console.log('userToEdit:', userToEdit)
 
    }
 
    const handleEditChange = (ev) => {
       const field = ev.target?.name
       const value = ev.target?.value
-      console.log('field:',field)
-      console.log('value:',value)
-      
+
       const newUser = { ...userToEdit }
       switch (field) {
          case 'fullname':
@@ -48,7 +42,7 @@ export const AdminSettings = () => {
             newUser.username = value
             break
          case 'isAdmin':
-            if (value==='false') newUser.isAdmin = false
+            if (value === 'false') newUser.isAdmin = false
             else newUser.isAdmin = true
             break
          case 'apiKey':
@@ -58,44 +52,53 @@ export const AdminSettings = () => {
       setUserToEdit(newUser)
    }
 
-const saveUser = async(ev) =>{
-   ev.preventDefault()
-   console.log('saving user:', userToEdit)
-   setIsEdit(false)
-   await dispatch(updateUser(userToEdit))
-   await dispatch(loadUsers())
+   const saveUser = async (ev) => {
+      ev.preventDefault()
+      setIsEdit(false)
+      await dispatch(updateUser(userToEdit))
+      await dispatch(loadUsers())
 
-}   
+   }
 
    return (
-      <div className='settings-app flex align-center space-around'>
-         <div className='admin-settings flex column align-center'>
-            <h1>{t('Admin settings')}:</h1>
-            <form onSubmit={selectUser}>
-               <select onChange={handleChange} name='userId'>
-                  {users.map((u, idx) => {
-                     return <option key={idx} value={u._id}>{u.fullname}</option>
-                  })}
-               </select>
-               <button onClick={() => selectUser}>{t('Select')}</button>
-            </form>
-            {isEdit &&
-               <section className="admin-edit">
-                  <button onClick={()=>{setIsEdit(false)}} className="esc-btn">x</button>
-                  <form>
-                     <input onChange={handleEditChange} autoFocus value={userToEdit.fullname} placeholder={t('Fullname')} type='text' name='fullname' />
-                     <input onChange={handleEditChange} value={userToEdit.username} placeholder={t('Username')} type='text' name='username' />
+      <section className='settings-app admin-settings flex column align-center'>
+         <form className="flex column justify-center align-center" onSubmit={selectUser}>
+            <h1 className="title">{t('Admin settings')}:</h1>
+            <select onChange={handleChange} name='userId'>
+               {users.map((u, idx) => {
+                  return <option key={idx} value={u._id}>{u.fullname}</option>
+               })}
+            </select>
+            <button onClick={() => selectUser}>{t('Select')}</button>
+         </form>
+         {isEdit &&
+            <section className="admin-edit">
+               <form className="flex column">
+               <button onClick={() => { setIsEdit(false) }} className="flex justify-center align-center esc-btn">x</button>
+                  <div className="flex align-center">
+                     <label>{t('Fullname')}:</label>
+                     <input autoComplete='off' onChange={handleEditChange} autoFocus value={userToEdit.fullname} placeholder={t('Fullname')} type='text' name='fullname' />
+                  </div>
+                  <div className="flex align-center">
+                     <label>{t('Username')}:</label>
+                     <input autoComplete='off' onChange={handleEditChange} value={userToEdit.username} placeholder={t('Username')} type='text' name='username' />
+                  </div>
+                  <div className="flex align-center">
+                  <label>{t('Permission')}:</label>
                      <select onChange={handleEditChange} value={userToEdit.isAdmin} name='isAdmin'>
-                        <option value={false}>Not admin</option>
-                        <option value={true}>Admin</option>
+                        <option value={false}>{t('Not admin')}</option>
+                        <option value={true}>{t('Admin')}</option>
                      </select>
-                     <input onChange={handleEditChange} value={userToEdit.API_KEY} placeholder={t('Api key')} type='text' name='apiKey' />
-                  <button onClick={saveUser}>Save</button>
-                  </form>
-               </section>
-            }
-         </div>
-      </div >
+                  </div>
+                  <div className="flex align-center">
+                     <label>{t('API Key')}:</label>
+                     <input className="input-api" autoComplete='off' onChange={handleEditChange} value={userToEdit.API_KEY} placeholder={t('Api key')} type='text' name='apiKey' />
+                  </div>
+                  <button onClick={saveUser}>{t('Save')}</button>
+               </form>
+            </section>
+         }
+      </section >
 
    )
 }

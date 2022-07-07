@@ -61,7 +61,31 @@
    "Select": "Select",
    "Zones": "Zones",
    "Refresh": "Refresh",
-   "Total printers": "כל המדפסות",
-   "Selected printers": "מדפסות נבחרות"
+   "Total printers": "Total printers",
+   "Selected printers": "Selected printers",
+   "Please login to see your settings": "Please login to see your settings",
+   "Home Page": "Home Page",
+   "Total Sales": "Total Sales",
+   "Total Orders": "Total Orders",
+   "Total Clients": "Total Clients",
+   "Last 24 Hours": "Last 24 Hours",
+   "Default": "Default",
+   "Fullname": "Fullname",
+   "Username": "Username",
+   "Permission": "Permission",
+   "API Key": "API Key",
+   "Admin": "Admin",
+   "Not admin": "Not admin",
+   "Start Now": "Start Now",
+   "Smart management for delivery orders": "Smart management for delivery orders",
+   "Beteabon is a decision support and management system for the delivery system in your restaurant,The system performs automation and customization for delivery orders": "Beteabon is a decision support and management system for the delivery system in your restaurant,The system performs automation and customization for delivery orders",
+   "Add zone": "Add zone",
+   "Total zones": "Total zones",
+   "Add": "Add",
+   "City": "City",
+   "Streets": "Streets"
+
+
+
    
 }

@@ -35,7 +35,7 @@ export const OrderList = ({ setIsEdit, orders }) => {
             {orders.map((order, idx) => {
                return (
                   <tr key={idx}>
-                     <OrderPreview setIsEdit={setIsEdit} order={order} />
+                     <OrderPreview setIsEdit={setIsEdit} order={order} user={user}/>
                   </tr>
                )
             }

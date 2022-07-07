@@ -61,18 +61,21 @@ export const PrinterPreview = ({ onRefreshPrinters, user, printer }) => {
          }
          {isEdit &&
             <form onClick={(ev)=>{ev.stopPropagation()}} className='flex column' style={{ width: '100%' }} onSubmit={onChangeName}>
-               <input onChange={handleChange} autoFocus className='user-input'
+               <button className="close-btn" onClick={(ev) => setIsEdit(false)}
+               >
+               <h3>x</h3>
+               </button>
+               <input onChange={handleChange} autoFocus className='user-input' autoComplete='off'
                   placeholder={printer.name} variant='filled' type='text' name='fullname' />
-                  <div className='flex space-around'>
-               <button onClick={(ev) => onChangeName(ev)}>Save</button>
-               <button onClick={(ev) => onChangeName(ev, true)}>Default</button>
-               <button onClick={(ev) => setIsEdit(false)}>X</button>
+                  <div className='flex space-between'>
+               <button onClick={(ev) => onChangeName(ev)}>{t('Save')}</button>
+               <button onClick={(ev) => onChangeName(ev, true)}>{t('Default')}</button>
                   </div>
             </form>
          }
          <p>
-            {t('status')}: <span>
-               {printer.state}
+            {t('Status')}: <span>
+               {t(printer.state)}
             </span>
          </p>
       </li>

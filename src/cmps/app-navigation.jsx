@@ -1,8 +1,9 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { NavLink } from 'react-router-dom'
+import { useSelector } from "react-redux";
+import { useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { UserMsg } from './user-msg'
-import { useNavigate } from 'react-router-dom'
 import i18next from 'i18next'
 
 import { userService } from '../services/user.service.js'
@@ -20,20 +21,25 @@ import FaceTwoToneIcon from '@mui/icons-material/FaceTwoTone';
 import LogoutIcon from '@mui/icons-material/Logout';
 import CloseIcon from '@mui/icons-material/Close';
 
-export const AppNavigation = () => {
+export const AppNavigation = ({ theme, toggleTheme }) => {
    const [lang, setLang] = useState('en')
    const navigation = useNavigate()
    const { t, i18n } = useTranslation();
 
+
+
+   const user = userService.getLoggedinUser()
+   const { orders } = useSelector((storeState) => storeState.orderModule)
+
    const onLogout = () => {
       userService.logout()
       navigation('/')
+      window.location.reload()
    }
 
    const onLogin = () => {
       navigation('/login')
    }
-   const user = userService.getLoggedinUser()
 
 
    const handelLangChange = (ev) => {
@@ -54,12 +60,12 @@ export const AppNavigation = () => {
             </div>} */}
             <div className='sidebar'>
                <nav>
-            <div className='top flex align-center space-between'>
-               <div className='logo flex img-container' style={{ width: '120px', padding: '14px' }}>
-                  <img src={logo} />
-               </div>
-               {/* <CloseIcon className='close-btn' /> */}
-            </div>
+                  <div className='top flex align-center space-between'>
+                     <div className='logo flex img-container'>
+                        <img src={logo} />
+                     </div>
+                     {/* <CloseIcon className='close-btn' /> */}
+                  </div>
                   {routes.map(route => <NavLink className='nav-link' key={route.path} to={route.path}>
                      <h3>
                         {(route.label === 'Home') && <span><HomeOutlinedIcon /></span>}
@@ -70,16 +76,19 @@ export const AppNavigation = () => {
                         {(route.label === 'Login') && <span><VpnKeyTwoToneIcon /></span>}
                         {(route.label === 'Signup') && <span><FaceTwoToneIcon /></span>}
                         {t(route.label)}
-                        {(route.label === 'Orders') && <span className='order-count'>26</span>}
+                        {(route.label === 'Orders') && <span className='order-count'>{orders.length || 984}</span>}
                      </h3>
                   </NavLink>)}
-                  <select onChange={handelLangChange} className="lang-option" value={lang}>
-                     <option value="he">{t('langHe')}</option>
-                     <option value="en">{t('langEn')}</option>
-                  </select>
+                  <div className='lang-container flex justify-center'>
+                     <select onChange={handelLangChange} className="lang-option" value={lang}>
+                        <option value="he">{t('langHe')}</option>
+                        <option value="en">{t('langEn')}</option>
+                     </select>
+                  </div>
+                  {/* <button onClick={()=>toggleTheme()} className='flex align-center justify-center' style={{margin:'10px auto'}}>Toggle Theme</button> */}
                </nav>
                {user && (
-                  <h3 onClick={()=>onLogout()} className='logout-btn'>
+                  <h3 onClick={() => onLogout()} className='logout-btn'>
                      {/* <h3 style={{ margin: '5px' }}>{t('Welcome')} {user.fullname}</h3> */}
                      <LogoutIcon />
                      {t('Logout')}

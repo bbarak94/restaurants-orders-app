@@ -2,9 +2,24 @@ import { useDispatch } from "react-redux"
 import { useTranslation } from 'react-i18next';
 
 import { removeOrder, setOrder } from "../store/actions/order.action"
-export const OrderPreview = ({ setIsEdit, order }) => {
+import { useEffect, useState } from "react";
+export const OrderPreview = ({ user, setIsEdit, order }) => {
    const { t, i18n } = useTranslation();
    const dispatch = useDispatch()
+   const [zoneName, setZoneName] = useState('')
+   useEffect(() => {
+      getZone()
+   }, [])
+
+   const getZone = (ev) => {
+      user.zones.map((zone, idx) => {
+         zone.streets.map((street, sIdx) => {
+            if (order.address.includes(zone.city) && order.address.includes(street)) setZoneName(zone.name)
+         })
+      })
+
+   }
+
    const getTime = (timeStamp) => {
       const time = new Date(timeStamp)
       let hour = time.getHours();
@@ -16,14 +31,13 @@ export const OrderPreview = ({ setIsEdit, order }) => {
       return `${hour}:${minute}`
       // return `${hour}:${minute}:${second}`
    }
-   
-   console.log('document.body.dir:',document.body.dir)
-   if(document.body.dir==='ltr'){
-      var price=(+order.totalPrice).toLocaleString('en-US', { style: 'currency', currency: 'USD' })
-   }else{
-      var price=(+order.totalPrice).toLocaleString('il-HE', { style: 'currency', currency: 'ILS' })
+
+   if (document.body.dir === 'ltr') {
+      var price = (+order.totalPrice).toLocaleString('en-US', { style: 'currency', currency: 'USD' })
+   } else {
+      var price = (+order.totalPrice).toLocaleString('il-HE', { style: 'currency', currency: 'ILS' })
    }
-   
+
    return (
       <>
          <td className="package-id">
@@ -39,6 +53,10 @@ export const OrderPreview = ({ setIsEdit, order }) => {
             {order.company}
          </td>
          <td>
+            {(zoneName) && <>
+               <span>{zoneName}</span>
+               <br />
+            </>}
             {order.address}
          </td>
          <td>

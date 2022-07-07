@@ -1,14 +1,14 @@
 import { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { useLocation, useNavigate } from 'react-router-dom'
-import { useTranslation  } from 'react-i18next';
+import { useTranslation } from 'react-i18next';
 
 
 import { login, signup, loadUsers } from '../store/actions/user.action'
 import { loadOrders } from '../store/actions/order.action'
 
 export function LoginSignup() {
-   const { t, i18n } = useTranslation();
+    const { t, i18n } = useTranslation();
 
     const navigation = useNavigate()
     const dispatch = useDispatch()
@@ -65,15 +65,15 @@ export function LoginSignup() {
             {
                 location.pathname === '/login' && (
                     <div className='login' >
-                        <form className='login-form' onSubmit={onLogin}>
+                        <form className='login-form flex column justify-center' onSubmit={onLogin}>
                             <h1 style={{ textAlign: 'center' }}>{t('Log in')}</h1>
-                            <input onChange={handleChange} autoFocus className='user-input'
+                            <input autoComplete='off' onChange={handleChange} autoFocus className='user-input'
                                 placeholder={t('Enter username')} variant='filled' type='text' name='username' />
-                            <input onChange={handleChange} autoFocus className='user-input'
-                                placeholder={t('Enter password')} variant='filled' type='password' autoComplete='off'
+                            <input autoComplete='off' onChange={handleChange} className='user-input'
+                                placeholder={t('Enter password')} variant='filled' type='password'
                                 name='password' />
                             <button onClick={onLogin} className='login-btn'>
-                            {t('Log in')}
+                                {t('Log in')}
                             </button>
                         </form>
                     </div>
@@ -82,18 +82,18 @@ export function LoginSignup() {
             {
                 location.pathname === '/signup' && (
                     <div className='signup'>
-                        <form className='signup-form' onSubmit={onSignup}>
+                        <form className='signup-form flex column justify-center' onSubmit={onSignup}>
                             <h1 style={{ textAlign: 'center' }}>{t('Signup')}</h1>
-                            <input onChange={handleChange} autoFocus className='user-input'
+                            <input autoComplete='off' onChange={handleChange} autoFocus className='user-input'
                                 placeholder={t('Enter fullname')} variant='filled' type='text' name='fullname' />
-                            <input onChange={handleChange}
-                                autoFocus className='user-input' placeholder={t('Enter username')}
+                            <input autoComplete='off' onChange={handleChange}
+                                className='user-input' placeholder={t('Enter username')}
                                 variant='filled' type='text' name='username' />
-                            <input onChange={handleChange} autoFocus className='user-input'
+                            <input autoComplete='off' onChange={handleChange} className='user-input'
                                 placeholder={t('Enter password')} variant='filled'
-                                type='password' autoComplete='off' name='password' />
+                                type='password' name='password' />
                             <button onClick={onSignup} className='signup-btn'>
-                            {t('Signup')}
+                                {t('Signup')}
                             </button>
                         </form>
                     </div>

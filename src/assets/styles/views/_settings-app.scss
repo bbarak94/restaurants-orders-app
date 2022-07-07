@@ -1,26 +1,97 @@
-.settings-app{
-   padding: 10px;
+.settings-app {
    text-align: center;
-   .settings-form{
-      input{
+   background: url(../../img/hero.jpg) top;
+   background-size: 100% 100%;
+   // width: 100%;
+   height: 100vh;
+   margin: 0;
+   padding: 32px;
+
+   form {
+      text-align: center;
+      background: var(--color-white);
+      padding: var(--card-padding);
+      border-radius: var(--card-border-radius);
+      margin-top: 1rem;
+      box-shadow: var(--box-shadow);
+      transition: all 300ms ease;
+      gap: 10px;
+      width: 400px;
+      align-items: center;
+
+      h1 {
+         font-size: 32px;
+         margin: auto;
+         // margin: 0;
+         line-height: 1.2;
+      }
+
+      h4 {
+         line-height: 1.5;
+         user-select: all;
+      }
+
+      &:hover {
+         box-shadow: none;
+         transition: all 300ms ease;
+      }
+
+      input {
+         height: 40px;
+         border-radius: 10px;
+         border: 1px solid gray;
+         width: 80%;
+         padding: 10px;
+      }
+
+      select {
+         cursor: pointer;
          text-align: center;
-         min-width: 300px;
+         min-width: 160px;
+         height: 30px;
+         align-self: center;
+         background: var(--color-white);
+         border-radius: var(--card-border-radius);
+         box-shadow: var(--box-shadow);
+         transition: all 300ms ease;
+         border: 2px solid gray;
       }
    }
-   .admin-settings{
 
-      .admin-edit{
-         .esc-btn{
-            align-self: flex-start;
-            justify-self: flex-start;
+
+   .admin-edit {
+      margin: 0;
+      form {
+         width: 400px;
+
+         input {
+            width: unset;
+            border-radius: var(--card-border-radius);
          }
+
+         .input-api {
+            width: 260px;
+         }
+
+         div {
+            justify-content: space-between;
+            width: 100%;
+         }
+      }
+
+      .esc-btn {
+         font-size: 18px;
+         width: 30px;
+         height: 30px;
+         border-radius: 12px;
+         align-self: flex-end;
       }
    }
 }
 
 
 @media(max-width:700px) {
-   .settings-app{
+   .settings-app {
       flex-direction: column;
    }
 }

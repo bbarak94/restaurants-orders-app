@@ -1,21 +1,31 @@
 import React, { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux'
 import { useTranslation } from 'react-i18next';
+
+import { loadOrders } from '../store/actions/order.action'
 
 import { userService } from '../services/user.service'
 import { orderService } from '../services/order.service'
 
 import { OrderList } from '../cmps/order-list'
 import { OrderEdit } from '../cmps/order-edit'
-import { loadOrders } from '../store/actions/order.action'
+
+import { InsightsApp } from '../cmps/insights-app'
+
 export const OrderApp = () => {
    const { t, i18n } = useTranslation();
    const [isEdit, setIsEdit] = useState(false)
    const user = userService.getLoggedinUser()
    const { orders } = useSelector((storeState) => storeState.orderModule)
    const dispatch = useDispatch()
+   const navigation = useNavigate()
    useEffect(() => {
-      if (!user) return
+      // if (!user) return
+      if (!user) {
+         navigation('/')
+         return
+      }
       dispatch(loadOrders(user._id))
    }, [])
 
@@ -24,7 +34,9 @@ export const OrderApp = () => {
    }
 
    if (!user) return (
-      <h1>{t('Please login to see your orders')}</h1>
+      <section className='order-app'>
+         <h1 className='title'>{t('Please login to see your orders')}</h1>
+      </section>
    )
    else if (!orders?.length) return (
       <section className='order-app'>
@@ -35,10 +47,13 @@ export const OrderApp = () => {
    )
    else return (
       <section className='order-app'>
-         <div className='flex align-center' style={{ gap: '10px', marginBottom: '5px' }}>
-            <button onClick={() => { onRefreshOrders() }}>{t('Refresh')}</button>
-            <button onClick={() => setIsEdit(true)}>{t('Add an order')}</button>
-            <h1 style={{ margin: 'auto 0' }}>{t('Orders count')}: {orders.length}</h1>
+         <InsightsApp totalOrders={orders.length} totalClients={orders.length} totalSales={orders.length} />
+         <div className='flex align-center space-between' style={{ gap: '10px', marginBottom: '5px' }}>
+            <div className='flex align-center'>
+               <button className='add-btn' onClick={() => setIsEdit(true)}>{t('Add an order')}</button>
+               <h1 className='title' style={{ margin: '0' }}>{t('Orders count')}: {orders.length}</h1>
+            </div>
+            <button className='refresh-btn' onClick={() => { onRefreshOrders() }}>{t('Refresh')}</button>
          </div>
          {(isEdit) && <OrderEdit setIsEdit={setIsEdit} />}
          <div className='order-table'>

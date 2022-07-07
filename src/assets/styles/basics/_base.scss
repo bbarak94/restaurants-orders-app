@@ -13,6 +13,16 @@
 //    box-sizing: border-box;
 // }
 
+// #light {
+//    color: black;
+//    background-color: var(--color-background);
+// }
+
+// #dark {
+//    color: var(--color);
+//    background-color: var(--color-dark);
+// }
+
 ::selection {
    background-color: $navigation;
    color: $bg-color;
@@ -45,16 +55,20 @@ body {
    background: var(--color-background);
    user-select: none;
    overflow-x: hidden;
+
    &.rtl {
       direction: rtl;
    }
 }
 
-main{
+
+main {
    display: grid;
    grid-template-columns: 18rem auto;
    max-height: 100vh;
+   overflow-y: auto;
 }
+
 // body {
 //    font-size: rem(18px);
 //    margin: 0;
@@ -78,8 +92,8 @@ h6 {
 
 section,
 footer {
-   margin:auto;
-   padding: 10px;
+   margin: auto;
+   padding: 20px;
 }
 
 img {
@@ -95,8 +109,14 @@ a {
    color: var(--color-dark);
    width: 100%;
 }
+
 // a {
 //    color: white;
 //    text-decoration: none;
 // }
 
+.title {
+   margin: 35px;
+   padding: 10px;
+   font-size: 40px;
+}

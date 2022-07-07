@@ -4,15 +4,20 @@ import { useTranslation } from 'react-i18next';
 import { PrinterList } from '../cmps/printer-list'
 import { userService } from '../services/user.service'
 import { printerService } from '../services/printer.service.js'
+import { useNavigate } from 'react-router-dom';
 
 export const PrinterApp = () => {
    const { t, i18n } = useTranslation();
    const [printers, setprinters] = useState([])
    const [activeCount, setActiveCount] = useState(0)
    const user = userService.getLoggedinUser()
-
+   const navigation = useNavigate()
    useEffect(() => {
-      if (!user || !user.API_KEY) return
+      // if (!user || !user.API_KEY) return
+      if (!user) {
+         navigation('/')
+         return
+      }
       getActiveCount()
       printerService.query(user.API_KEY)
          .then(printers => {
@@ -47,13 +52,16 @@ export const PrinterApp = () => {
 
 
 
-   if (!user) return <h1>{t('Please login to see your printers')}</h1>
+   if (!user) return <section className='printer-app'>
+      <h1 className='title'>{t('Please login to see your printers')}</h1>
+   </section>
+
    else if (!user.API_KEY) return <h1>{t('Please check your API key')}</h1>
    else if (!printers) return <h1>{user.fullname} {t('have no printers yet, please check your API KEY')}</h1>
    else return (
       <section className='printer-app'>
-         <div className='flex column ' style={{ gap: '10px', marginBottom: '5px' }}>
-            <button style={{maxWidth: '42px'}} onClick={() => { onRefreshPrinters() }}>{t('Refresh')}</button>
+         <div className='printer-status flex column'>
+            <button onClick={() => { onRefreshPrinters() }}>{t('Refresh')}</button>
             <h1 style={{ margin: 'auto 0' }}>{t('Total printers')}: {printers.length}</h1>
             <h1 style={{ margin: 'auto 0' }}>{t('Selected printers')}: {activeCount}</h1>
          </div>
