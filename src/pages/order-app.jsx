@@ -38,13 +38,13 @@ export const OrderApp = () => {
       </section>
    )
 
-   else if (!orders?.length) return (
-      <section className='order-app'>
-         <h1>{t('No orders')}</h1>
-         <button onClick={() => setIsEdit(true)}>{t('Add an order')}</button>
-         {(isEdit) && <OrderEdit setIsEdit={setIsEdit} />}
-      </section>
-   )
+   // else if (!orders?.length) return (
+   //    <section className='order-app'>
+   //       <h1>{t('No orders')}</h1>
+   //       <button onClick={() => setIsEdit(true)}>{t('Add an order')}</button>
+   //       {(isEdit) && <OrderEdit setIsEdit={setIsEdit} />}
+   //    </section>
+   // )
 
    else return (
       <section className='order-app'>

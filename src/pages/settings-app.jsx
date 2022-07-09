@@ -43,7 +43,7 @@ export const SettingsApp = () => {
    if (user.isAdmin) return (<AdminSettings />)
 
    return (
-      <section className='settings-app flex align-center space-around'>
+      <section className='settings-app flex space-around'>
          <form className='settings-form flex column align-center' onSubmit={onChangeApi}>
             <h1 className='title'>{t('Welcome')} {user.fullname}</h1>
             <h2>{t('Your API-KEY is')}: </h2>

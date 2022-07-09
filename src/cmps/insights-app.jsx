@@ -35,8 +35,26 @@ export const InsightsApp = () => {
          setTotalOrders(orders.length)
          setTotalClients(orders.length)
       }
-
    }, [])
+
+   useEffect(() => {
+      if (user) {
+         setTotalOrders(orders.length)
+         var sum = orders.reduce((acc, order) => {
+            return (+order.totalPrice) + acc
+         }, 0)
+         setTotalSales(sum)
+         setTotalOrders(orders.length)
+      }
+      if (users.length) {
+         setTotalClients(users.length)
+      }
+
+      if (orders.length) {
+         setTotalOrders(orders.length)
+         setTotalClients(orders.length)
+      }
+   }, [orders])
 
    return (
       <div className='insights'>

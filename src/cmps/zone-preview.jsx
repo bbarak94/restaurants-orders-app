@@ -5,9 +5,11 @@ import { useTranslation } from 'react-i18next'
 import { updateUser } from '../store/actions/user.action';
 
 import { StreetPreview } from './street-preview.jsx'
+import { useNavigate } from "react-router-dom";
 
 export const ZonePreview = ({ idx, user, zones, zone }) => {
    const dispatch = useDispatch()
+   const navigation = useNavigate()
    const { t, i18n } = useTranslation();
 
    const [name, setName] = useState(zone.name)
@@ -20,6 +22,11 @@ export const ZonePreview = ({ idx, user, zones, zone }) => {
       if (!zone.name) setIsNameEdit(true)
       if (!zone.city) setIsCityEdit(true)
    }, [])
+
+   useEffect(() => {
+      navigation('/zones')
+   }, [user])
+   
 
    const handleChange = (ev) => {
       const field = ev.target?.name

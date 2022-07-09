@@ -14,11 +14,16 @@ export const ZoneApp = () => {
 
    const { user } = useSelector((storeState) => storeState.userModule)
 
-   const [zones, setApi] = useState(user.zones)
+   const [zones, setZones] = useState(user.zones)
 
    useEffect(() => {
       if (!user) { navigation('/') }
    }, [])
+   
+   useEffect(() => {
+      setZones(user.zones)
+   }, [user])
+   
 
    if (!user) return (
       <section className='zones-app'>
